@@ -1,0 +1,33 @@
+<div [formGroup]="formGroup">
+  <mat-form-field class="full-width">
+    <input
+      matInput
+      [placeholder]="inputName"
+      type="number"
+      [max]="maxValue"
+      [min]="minValue"
+      [step]="stepValue"
+      [name]="controlName"
+      [formControlName]="controlName"
+    />
+    <mat-error
+      *ngIf="validateInputsService.hasErrorValidate(formControl, 'required')"
+    >
+      Required field
+    </mat-error>
+
+    <mat-error
+      *ngIf="validateInputsService.hasErrorValidate(formControl, 'min')"
+    >
+      {{ validateInputsService.lenghtValidator(formControl, "min") }} is minimum
+      score valid
+    </mat-error>
+
+    <mat-error
+      *ngIf="validateInputsService.hasErrorValidate(formControl, 'max')"
+    >
+      {{ validateInputsService.lenghtValidator(formControl, "max") }} is maximum
+      score valids
+    </mat-error>
+  </mat-form-field>
+</div>
