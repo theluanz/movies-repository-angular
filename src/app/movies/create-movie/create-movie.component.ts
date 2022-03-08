@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
+import { MoviesService } from 'src/app/core/movies.service';
+import { AlertComponent } from 'src/app/shared/components/alert/alert.component';
 import { ValidateInputsService } from 'src/app/shared/components/inputs/validate-inputs.service';
+import { Alert } from 'src/app/shared/models/alert';
+import { Movie } from 'src/app/shared/models/movie';
 
 @Component({
   selector: 'app-create-movie',
@@ -14,7 +20,10 @@ export class CreateMovieComponent implements OnInit {
 
   constructor(
     public validateInputsService: ValidateInputsService,
-    private formBuilder: FormBuilder
+    public materialDialog: MatDialog,
+    private formBuilder: FormBuilder,
+    private movieService: MoviesService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -52,17 +61,56 @@ export class CreateMovieComponent implements OnInit {
       category: ['', [Validators.required]],
     });
   }
+
   get f() {
     return this.form.controls;
   }
-  saveMovie(): void {
+
+  submit(): void {
     this.form.markAllAsTouched();
     if (this.form.invalid) {
       return;
     }
-    alert('Sucess !! \n\n' + JSON.stringify(this.form.value, null, 4));
+    const movie = this.form.getRawValue() as Movie;
+    this.save(movie);
   }
+
   resetForm(): void {
     this.form.reset();
+  }
+
+  private save(movie: Movie): void {
+    this.movieService.saveMovie(movie).subscribe(
+      () => {
+        const config = {
+          data: {
+            btnSucess: 'Go to listing',
+            btnCancel: 'Create other movie',
+            haveCancelBtn: true,
+            colorBtnCancel: 'primary',
+          } as Alert,
+        };
+
+        const dialog = this.materialDialog.open(AlertComponent, config);
+        dialog.afterClosed().subscribe((clickInSucess) => {
+          if (clickInSucess) {
+            this.router.navigateByUrl('movies');
+          } else {
+            this.resetForm();
+          }
+        });
+      },
+      () => {
+        const config = {
+          data: {
+            title: 'Error',
+            description: 'We were unable to save your movie, try again later',
+            btnSucess: 'Close',
+            colorBtnSucess: 'warn',
+          } as Alert,
+        };
+        this.materialDialog.open(AlertComponent, config);
+      }
+    );
   }
 }
