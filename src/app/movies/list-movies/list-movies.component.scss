@@ -11,11 +11,26 @@
 
   }
 }
+.mat-card-image{
+  width:auto;
+  height:auto;
+  display: block;
+  margin: 0 auto;
+  padding: 0 0 16px;
 
-@media screen and (min-width: 600px) {
+}
+
+@media screen and (min-width: 525px) {
   .home-content {
     .home-card {
       width: calc(50% - 52px);
+    }
+  }
+}
+@media screen and (min-width: 800px) {
+  .home-content {
+    .home-card {
+      width: calc(33.333% - 52px);
     }
   }
 }

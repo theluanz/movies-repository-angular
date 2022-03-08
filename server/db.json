@@ -109,56 +109,6 @@
       "urlImdb": "https://www.imdb.com/title/tt2527338/?ref_=vi_md_ti",
       "category": "Adventure",
       "id": 11
-    },
-    {
-      "title": "tes",
-      "urlPhoto": "",
-      "releasedDate": "2022-03-25T03:00:00.000Z",
-      "description": "",
-      "imdbScore": 0,
-      "imdbUrl": "asfa",
-      "category": "Comedy",
-      "id": 12
-    },
-    {
-      "title": "dddddddd",
-      "urlPhoto": "",
-      "releasedDate": "2022-03-15T03:00:00.000Z",
-      "description": "sdfsdfs",
-      "imdbScore": 0,
-      "imdbUrl": "asfasfaf",
-      "category": "Comedy",
-      "id": 13
-    },
-    {
-      "title": "test",
-      "urlPhoto": "sdfsdfdfghsdfgsdg",
-      "releasedDate": "2022-03-09T03:00:00.000Z",
-      "description": "dssfgsdgf",
-      "imdbScore": 0,
-      "imdbUrl": "dsfgsdfgsd",
-      "category": "Adventure",
-      "id": 14
-    },
-    {
-      "title": "asdasdasd",
-      "urlPhoto": "sgfdgsdfghdsfgsdgf",
-      "releasedDate": "2022-03-22T03:00:00.000Z",
-      "description": "gdsfgsd",
-      "imdbScore": 0,
-      "imdbUrl": "fgsd",
-      "category": "Science fiction",
-      "id": 15
-    },
-    {
-      "title": "dsfggsdfg",
-      "urlPhoto": "dfgsdfgdfgs",
-      "releasedDate": "2022-03-21T03:00:00.000Z",
-      "description": "",
-      "imdbScore": 0,
-      "imdbUrl": "dsfgsdfg",
-      "category": "Science fiction",
-      "id": 16
     }
   ]
 }
