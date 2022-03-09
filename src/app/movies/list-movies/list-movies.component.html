@@ -1,15 +1,43 @@
 <mat-toolbar class="app-title">Filmes Cadastrados</mat-toolbar>
+<mat-card class="filter-container margin10 float-left">
+  <form autocomplete="off" noValidate [formGroup]="formFilter">
+    <div class="float-left width50">
+      <div class="padding10">
+        <app-input-text
+          inputName="Text"
+          controlName="text"
+          [formGroup]="formFilter"
+        ></app-input-text>
+      </div>
+    </div>
+    <div class="float-left width50">
+      <div class="padding10">
+        <app-input-select
+          inputName="Search here..."
+          controlName="category"
+          [formGroup]="formFilter"
+          [options]="categorys"
+        ></app-input-select>
+      </div>
+    </div>
+  </form>
+</mat-card>
 
-<div class="home-content" infiniteScroll (scrolled)="onScroll()">
+<div
+  class="home-content"
+  infiniteScroll
+  (scrolled)="onScroll()"
+  *ngIf="movies.length; else noData"
+>
   <mat-card class="home-card" *ngFor="let movie of movies">
     <mat-card-header>
       <mat-card-title>{{ movie.title }}</mat-card-title>
       <mat-card-subtitle>{{ movie.category }}</mat-card-subtitle>
     </mat-card-header>
-    <img mat-card-image [src]="movie.urlPhoto" [alt]="movie.title" />
+    <img mat-card-image [src]="movie.urlPhoto || noPhoto" [alt]="movie.title" />
     <mat-card-content>
-      <p>
-        {{ movie.description }}
+      <p class="break-lines">
+        {{ movie.description || "No description available" }}
       </p>
     </mat-card-content>
     <mat-card-actions>
@@ -17,3 +45,6 @@
     </mat-card-actions>
   </mat-card>
 </div>
+<ng-template #noData>
+  <h1 class="full-width main-div padding10">No results</h1>
+</ng-template>

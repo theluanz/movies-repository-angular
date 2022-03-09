@@ -1,3 +1,5 @@
+import { ConfigParamsService } from './config-params.service';
+import { ConfigParams } from './../shared/models/config-params';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -9,15 +11,17 @@ const url = 'http://localhost:3000/movies/';
   providedIn: 'root',
 })
 export class MoviesService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(
+    private httpClient: HttpClient,
+    private configParamsService: ConfigParamsService
+  ) {}
 
   saveMovie(movie: Movie): Observable<Movie> {
     return this.httpClient.post<Movie>(url, movie);
   }
 
-  listMoviesPaginate(page: number, numberOfPosts: number) {
-    let httpParams = new HttpParams();
-    httpParams = httpParams.set('_page', page).set('_limit', numberOfPosts);
+  listMoviesPaginate(configParams: ConfigParams): Observable<Movie[]> {
+    const httpParams = this.configParamsService.configurateParams(configParams);
     return this.httpClient.get<Movie[]>(url, { params: httpParams });
   }
 }

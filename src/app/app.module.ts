@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './shared/components/footer/footer.component';
-import { TableComponent } from './shared/components/table/table.component';
 import { MaterialModule } from './shared/material/material.module';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { AlertComponent } from './shared/components/alert/alert.component';
@@ -16,7 +15,6 @@ import { AlertComponent } from './shared/components/alert/alert.component';
   declarations: [
     AppComponent,
     FooterComponent,
-    TableComponent,
     HeaderComponent,
     AlertComponent,
   ],

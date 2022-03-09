@@ -12,14 +12,21 @@
   }
 }
 .mat-card-image{
-  width:auto;
-  height:auto;
+  width:182px;
+  height:268px;
   display: block;
   margin: 0 auto;
   padding: 0 0 16px;
 
 }
 
+.filter-container{
+  width: calc(100% - 50px)
+}
+
+.break-line{
+  white-space: pre-line;
+}
 @media screen and (min-width: 525px) {
   .home-content {
     .home-card {
