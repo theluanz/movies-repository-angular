@@ -5,7 +5,7 @@
   <mat-sidenav #sidenav class="sidenav" fixedInViewport="true">
     <mat-toolbar color="primary">Menu</mat-toolbar>
     <mat-nav-list (click)="closeSideNav()">
-      <a mat-list-item [routerLink]="['/movies/list']">Inicial</a>
+      <a mat-list-item [routerLink]="['/movies']">Inicial</a>
       <mat-divider></mat-divider>
       <a mat-list-item [routerLink]="['/movies/create']"
         >Cadastrar novo Filme</a
@@ -23,10 +23,7 @@
       >
         <mat-icon aria-label="Side nav toggle icon"> menu</mat-icon>
       </button>
-      <span>Minha Lista de Filmes</span>
-      <button mat-icon-button [matMenuTriggerFor]="menu">
-        <mat-icon>more_vert</mat-icon>
-      </button>
+      <span><a routerLink="/movies"> My Movie List</a></span>
     </mat-toolbar>
 
     <div class="app-content">
@@ -35,14 +32,3 @@
     <app-footer></app-footer>
   </mat-sidenav-content>
 </mat-sidenav-container>
-
-<mat-menu #menu="matMenu">
-  <button mat-menu-item>
-    <mat-icon>account_circle</mat-icon>
-    <span>Conta</span>
-  </button>
-  <button mat-menu-item>
-    <mat-icon>settings</mat-icon>
-    <span>Configurações</span>
-  </button>
-</mat-menu>

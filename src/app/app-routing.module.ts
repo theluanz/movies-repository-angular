@@ -1,3 +1,4 @@
+import { ViewMoviesComponent } from './movies/view-movies/view-movies.component';
 import { ListMoviesComponent } from './movies/list-movies/list-movies.component';
 import { NgModule } from '@angular/core';
 import { MoviesModule } from './movies/movies.module';
@@ -19,7 +20,20 @@ const routes: Routes = [
       },
       {
         path: 'create',
-        component: CreateMovieComponent,
+        children: [
+          {
+            path: '',
+            component: CreateMovieComponent,
+          },
+          {
+            path: ':id',
+            component: CreateMovieComponent,
+          },
+        ],
+      },
+      {
+        path: ':id',
+        component: ViewMoviesComponent,
         pathMatch: 'full',
       },
     ],

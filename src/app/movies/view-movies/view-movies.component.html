@@ -1,0 +1,29 @@
+<mat-card class="width50 main-div center">
+  <mat-list *ngIf="movie; else noData">
+    <mat-list-item> Title: {{ movie.title }}</mat-list-item>
+    <mat-list-item>
+      Released Date:
+      {{ movie.releasedDate | date: "dd/MM/yyyy" }}</mat-list-item
+    >
+    <mat-list-item> Category: {{ movie.category }}</mat-list-item>
+    <mat-list-item class="break-line">
+      Description: {{ movie.description }}</mat-list-item
+    >
+    <mat-list-item
+      >IMDb Score:
+      <a [href]="movie.urlImdb" target="_blank">{{
+        movie.imdbScore
+      }}</a></mat-list-item
+    >
+    <img mat-card-image [src]="movie.urlPhoto || noPhoto" />
+  </mat-list>
+  <mat-card-actions>
+    <button (click)="edit()" type="submit" color="accent" mat-raised-button>
+      Edit
+    </button>
+    <button (click)="delete()" color="warn" mat-raised-button>Delete</button>
+  </mat-card-actions>
+</mat-card>
+<ng-template #noData>
+  <h1 class="full-width main-div">No result</h1>
+</ng-template>

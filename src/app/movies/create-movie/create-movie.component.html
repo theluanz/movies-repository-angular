@@ -1,6 +1,6 @@
 <mat-toolbar class="app-title">Create Movie</mat-toolbar>
 <div class="main-div">
-  <mat-card class="center width50">
+  <mat-card class="center width50" *ngIf="form">
     <form
       autocomplete="off"
       noValidate
@@ -46,13 +46,13 @@
         <app-input-text
           inputName="URL IMDb"
           [formGroup]="form"
-          controlName="imdbUrl"
+          controlName="urlImdb"
         >
         </app-input-text>
         <app-input-select
-          inputName="URL IMDb"
+          inputName="Category"
           [formGroup]="form"
-          controlName="imdbUrl"
+          controlName="category"
           [options]="categorys"
         ></app-input-select>
       </mat-card-content>

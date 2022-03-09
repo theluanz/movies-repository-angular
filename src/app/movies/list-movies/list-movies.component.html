@@ -41,10 +41,12 @@
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <button color="accent" (click)="open()" mat-raised-button>OPEN</button>
+      <button color="accent" (click)="open(movie.id!)" mat-raised-button>
+        OPEN
+      </button>
     </mat-card-actions>
   </mat-card>
 </div>
 <ng-template #noData>
-  <h1 class="full-width main-div padding10">No results</h1>
+  <h1 class="full-width main-div">No results</h1>
 </ng-template>

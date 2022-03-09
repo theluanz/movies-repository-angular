@@ -20,8 +20,19 @@ export class MoviesService {
     return this.httpClient.post<Movie>(url, movie);
   }
 
+  editMovie(movie: Movie): Observable<Movie> {
+    return this.httpClient.put<Movie>(url + movie.id, movie);
+  }
+
   listMoviesPaginate(configParams: ConfigParams): Observable<Movie[]> {
     const httpParams = this.configParamsService.configurateParams(configParams);
     return this.httpClient.get<Movie[]>(url, { params: httpParams });
+  }
+
+  getElementById(id: number): Observable<Movie> {
+    return this.httpClient.get<Movie>(url + id);
+  }
+  deleteMovie(id: number): Observable<void> {
+    return this.httpClient.delete<void>(url + id);
   }
 }

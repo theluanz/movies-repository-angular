@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ConfigParams } from './../../shared/models/config-params';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
@@ -22,7 +23,11 @@ export class ListMoviesComponent implements OnInit {
   movies: Movie[] = [];
   formFilter!: FormGroup;
 
-  constructor(private movieService: MoviesService, private fb: FormBuilder) {
+  constructor(
+    private movieService: MoviesService,
+    private fb: FormBuilder,
+    private router: Router
+  ) {
     this.listMovies();
   }
 
@@ -58,7 +63,9 @@ export class ListMoviesComponent implements OnInit {
   onScroll(): void {
     this.listMovies();
   }
-  open() {}
+  open(id: number): void {
+    this.router.navigateByUrl(`movies/${id}`);
+  }
 
   private listMovies(): void {
     this.configParams.page++;
